@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://jsf22.jee.edu/behavior"> 
+<!-- xmlns:p="http://primefaces.org/ui" -->
+<h:head>
+	<title>JEE - JSF 2.2</title>
+</h:head> 
+<body> 
+
+	<h:panelGrid columns="2">
+		<h:panelGroup layout="block">
+			<h:form>
+				<h:dataTable value="#{tableDataProvider.userDatas}" var="user">
+					<f:facet name="header">Users Data</f:facet>
+					
+					<h:column id="id">
+						<f:facet name="header">ID</f:facet>
+						#{user.id}
+						<f:facet name="footer">ID</f:facet>
+					</h:column>
+					
+					<h:column id="name">
+						<f:facet name="header">Name</f:facet>
+						#{user.name}
+						<f:facet name="footer">Name</f:facet>
+					</h:column>
+					
+					<h:column id="surname">
+						<f:facet name="header">Surname</f:facet>
+						#{user.surname}
+						<f:facet name="footer">Surname</f:facet>
+					</h:column>
+					
+					<h:column id="email">
+						<f:facet name="header">E-Mail</f:facet>
+						#{user.email}
+						<f:facet name="footer">E-Mail</f:facet>
+					</h:column>
+					
+					<h:column id="action">
+						<f:facet name="header">Action</f:facet>
+						<h:commandButton action="#{tableDataProvider.deleteUser}" value="Delete" >
+							<f:setPropertyActionListener value="#{user}" target="#{tableDataProvider.selectedUser}" />
+							<b:confirm />
+						</h:commandButton>
+						<f:facet name="footer">Action</f:facet>
+					</h:column>
+					
+					<f:facet name="footer">Users Data</f:facet>
+				</h:dataTable>
+			</h:form>
+		</h:panelGroup>
+		
+<!-- 		<h:panelGroup layout="block"> -->
+<!-- 			<p:dataGrid value="#{tableDataProvider.userDatas}" var="user" paginator="true" columns="3" layout="grid" lazy="true" -->
+<!-- 					rows="10" -->
+<!-- 					rowsPerPageTemplate="6,12,16" -->
+<!-- 					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"> -->
+				
+<!-- 				<f:facet name="header">Users Data</f:facet> -->
+				
+<!-- 				<p:panel header="ID: #{user.id}"> -->
+<!-- 					<h:panelGrid columns="2" style="width:100%"> -->
+	
+<!-- 						<h:outputLabel value="Name:" for="name"/> -->
+<!-- 						<h:outputText value="#{user.name}" id="name"/> -->
+	
+<!-- 						<h:outputLabel value="Surname:" for="surname" /> -->
+<!-- 						<h:outputText value="#{user.surname}" id="surname"/> -->
+	
+<!-- 						<h:outputLabel value="E-Mail:" for="email"/> -->
+<!-- 						<h:outputText value="#{user.email}" id="email"/> -->
+	
+<!-- 					</h:panelGrid> -->
+<!-- 				</p:panel> -->
+				
+<!-- 			</p:dataGrid> -->
+<!-- 		</h:panelGroup> -->
+	</h:panelGrid>
+
+</body> 
+</html>
